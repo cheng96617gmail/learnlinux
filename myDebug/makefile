@@ -55,8 +55,12 @@ OBJS_FILESTAT += \
 ./src/apue.o \
 ./src/filestat.o
 
+OBJS_MYCHMOD += \
+./src/apue.o \
+./src/mychmod.o
+
 all:helloworld myls rwsysio rwstdio myproc mysign conf mylseek holewr fcntlex \
-filestat
+filestat mychmod
 
 helloworld:$(OBJS_HELLOWORLD)
 	@echo 'Building target: $@'
@@ -136,7 +140,14 @@ filestat:$(OBJS_FILESTAT)
 	gcc -o "filestat" $(OBJS_FILESTAT)
 	@echo 'Finished building target:$@'
 	@echo ' '
-	
+
+mychmod:$(OBJS_MYCHMOD)
+	@echo 'Building target:$@'
+	@echo 'Invoking: GCC C Linker'
+	gcc -o "mychmod" $(OBJS_MYCHMOD)
+	@echo 'Finished building target:$@'
+	@echo ' '
+		
 src/%.o: ../src/%.c
 	@echo 'Building file: $<'
 	@echo 'Invoking: GCC C Compiler'

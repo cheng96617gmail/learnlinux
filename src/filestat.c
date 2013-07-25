@@ -1,4 +1,5 @@
 #include "apue.h"
+#include <time.h>
 
 int main(int argc, char *argv[]) {
 	int i;
@@ -35,6 +36,8 @@ int main(int argc, char *argv[]) {
 		printf("st_uid:%d, ",(int)buf.st_uid);
 		printf("st_gid:%d, ",(int)buf.st_gid);
 		printf("st_size:%d, ",(int)buf.st_size);
+		printf("st_atime:%s, ",ctime(&buf.st_atime));
+
 		//printf("st_atime:"+buf.st_atime);
 		//printf("st_ctime:"+buf.st_ctime);
 		//printf("st_mtime:"+buf.st_mtime);
