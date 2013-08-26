@@ -63,8 +63,12 @@ OBJS_PRTENVIRON += \
 ./src/apue.o \
 ./src/prtenviron.o
 
+OBJS_PRTLIMITS += \
+./src/apue.o \
+./src/prtlimits.o
+
 all:helloworld myls rwsysio rwstdio myproc mysign conf mylseek holewr fcntlex \
-filestat mychmod prtenviron
+filestat mychmod prtenviron prtlimits
 
 helloworld:$(OBJS_HELLOWORLD)
 	@echo 'Building target: $@'
@@ -156,6 +160,13 @@ prtenviron:$(OBJS_PRTENVIRON)
 	@echo 'Building target:$@'
 	@echo 'Invoking: GCC C Linker'
 	gcc -o "prtenviron" $(OBJS_PRTENVIRON)
+	@echo 'Finished building target:$@'
+	@echo ' '
+
+prtlimits:$(OBJS_PRTLIMITS)
+	@echo 'Building target:$@'
+	@echo 'Invoking:GCC C Linker'
+	gcc -o "prtlimits" $(OBJS_PRTLIMITS)
 	@echo 'Finished building target:$@'
 	@echo ' '
 		
