@@ -6,5 +6,6 @@ int main(int agrc, char *argv[]){
 	for(i=0;*environ!=NULL;i++){
 		printf("%s\n",environ[i]);
 	}
+
 	exit(0);
 }

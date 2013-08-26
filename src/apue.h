@@ -44,6 +44,7 @@ void err_exit(int,const char *,...);
 void err_ret(const char *,...);
 void err_sys(const char *,...);
 
+char* path_alloc(int *len);
 
 
 #endif /* APUE_H_ */

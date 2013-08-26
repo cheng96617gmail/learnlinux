@@ -8,6 +8,7 @@
 #include "apue.h"
 #include <stdarg.h>
 #include <errno.h>
+#include <limits.h>
 
 static void err_doit(int, int, const char *, va_list);
 
@@ -72,5 +73,15 @@ static void err_doit(int errflags, int error, const char *fmt, va_list ap) {
 	fflush(stdout);
 	fputs(buf, stderr);
 	fflush(NULL);
+}
+
+char* path_alloc(int *len){
+	char *rs;
+	*len=PATH_MAX+1;
+	rs=(char *)calloc(*len,sizeof(char));
+	if(rs==0){
+		err_sys("virtual memory exhausted");
+	}
+	return rs;
 }
 

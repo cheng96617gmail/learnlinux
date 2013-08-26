@@ -59,8 +59,12 @@ OBJS_MYCHMOD += \
 ./src/apue.o \
 ./src/mychmod.o
 
+OBJS_PRTENVIRON += \
+./src/apue.o \
+./src/prtenviron.o
+
 all:helloworld myls rwsysio rwstdio myproc mysign conf mylseek holewr fcntlex \
-filestat mychmod
+filestat mychmod prtenviron
 
 helloworld:$(OBJS_HELLOWORLD)
 	@echo 'Building target: $@'
@@ -145,6 +149,13 @@ mychmod:$(OBJS_MYCHMOD)
 	@echo 'Building target:$@'
 	@echo 'Invoking: GCC C Linker'
 	gcc -o "mychmod" $(OBJS_MYCHMOD)
+	@echo 'Finished building target:$@'
+	@echo ' '
+
+prtenviron:$(OBJS_PRTENVIRON)
+	@echo 'Building target:$@'
+	@echo 'Invoking: GCC C Linker'
+	gcc -o "prtenviron" $(OBJS_PRTENVIRON)
 	@echo 'Finished building target:$@'
 	@echo ' '
 		
