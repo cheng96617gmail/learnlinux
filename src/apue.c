@@ -85,3 +85,43 @@ char* path_alloc(int *len){
 	return rs;
 }
 
+int Socket(int namespace,int style,int protocol){
+	int n;
+	if((n=socket(namespace,style,protocol))<0)
+		err_sys("socket error");
+	return n;
+}
+
+int Bind(int socket,SA *addr,socklen_t len){
+	int n;
+	if((n=bind(socket,addr,len))<0)
+		err_sys("bind error");
+	return n;
+}
+
+int Listen(int socket,int n){
+	int r;
+	if((r=listen(socket,n))<0)
+		err_sys(" error");
+	return r;
+}
+
+int Accept(int socket,SA *addr,socklen_t *len){
+	int n;
+	if((n=accept(socket,addr,len))<0)
+		err_sys("accept error");
+	return n;
+}
+
+size_t Write(int filedes,const char *buffer,size_t size){
+	size_t n;
+	if((n=write(filedes,buffer,size))<0)
+		err_sys("write error");
+	return n;
+}
+int Close(int filedes){
+	int n;
+	if((n=close(filedes))<0)
+		err_sys("close error");
+	return n;
+}

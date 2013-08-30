@@ -67,8 +67,16 @@ OBJS_PRTLIMITS += \
 ./src/apue.o \
 ./src/prtlimits.o
 
+OBJS_DAYTIMECLIENT +=\
+./src/apue.o \
+./src/daytimeclient.o
+
+OBJS_DAYTIMESERV +=\
+./src/apue.o \
+./src/daytimeserv.o
+
 all:helloworld myls rwsysio rwstdio myproc mysign conf mylseek holewr fcntlex \
-filestat mychmod prtenviron prtlimits
+filestat mychmod prtenviron prtlimits daytimeclient daytimeserv
 
 helloworld:$(OBJS_HELLOWORLD)
 	@echo 'Building target: $@'
@@ -169,6 +177,20 @@ prtlimits:$(OBJS_PRTLIMITS)
 	gcc -o "prtlimits" $(OBJS_PRTLIMITS)
 	@echo 'Finished building target:$@'
 	@echo ' '
+
+daytimeclient:$(OBJS_DAYTIMECLIENT)
+	@echo 'Building target:$@'
+	@echo 'Invoking GCC C Linker'
+	gcc -o $@ $(OBJS_DAYTIMECLIENT)
+	@echo 'Finished building target:$@'
+	@echo ' '
+	
+daytimeserv:$(OBJS_DAYTIMESERV)
+	@echo 'Building target:$@'
+	@echo 'Invoking GCC C Linker'
+	gcc -o $@ $(OBJS_DAYTIMESERV)
+	@echo 'Finished building target:$@'
+	@echo ' '
 		
 src/%.o: ../src/%.c
 	@echo 'Building file: $<'
@@ -179,5 +201,5 @@ src/%.o: ../src/%.c
 	
 .PHONY: all clean
 clean:
-	-rm helloworld myls $(OBJS_HELLOWORLD) $(OBJS_MYLS)
+	-rm helloworld myls $(OBJS_HELLOWORLD) $(OBJS_MYLS) $(daytimeclient)
  
