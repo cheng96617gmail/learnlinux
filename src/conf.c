@@ -39,7 +39,7 @@ main(int argc,char *argv[]){
 #else
 	printf("no symbol for %s\n","_SC_CHILD_MAX");
 #endif
-#ifdef clock ticks/second
+#ifdef clock
 	printf("clock ticks/second defined to be %d\n",clock ticks/second+0);
 #else
 	printf("no symbol for %s\n","clock ticks/second");
