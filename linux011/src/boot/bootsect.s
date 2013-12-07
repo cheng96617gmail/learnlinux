@@ -27,13 +27,14 @@ start:
     mov cx,#256
     sub si,si
     sub di,di
-    rep movw
+    rep 
+    movw
     jmpi go,INITSEG
 go:
     mov ax,cs
-    mov ds,cs
-    mov es,cs
-    mov ss,cs
+    mov ds,ax
+    mov es,ax
+    mov ss,ax
     mov sp,#0xff00
 load_setup:
     mov dx,#0x0000
@@ -88,9 +89,9 @@ root_defined:
     jmpi 0,SYSSEG
 
 
-    sread .word 1+SETUPLEN
-    head  .word 0
-    track .word 0
+    sread: .word 1+SETUPLEN
+    head:  .word 0
+    track: .word 0
 
 read_it:
     mov ax,es
@@ -192,10 +193,10 @@ boot_flag:
     .word 0xAA55
 
 .text
-endtext
+endtext:
 .bss
-endbss
+endbss:
 .data
-enddata
+enddata:
 
     
